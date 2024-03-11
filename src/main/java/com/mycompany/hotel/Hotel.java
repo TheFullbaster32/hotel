@@ -8,241 +8,196 @@ import java.util.Scanner;
 
 public class Hotel {
 
+    private static Scanner sca = new Scanner(System.in);
+    private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+    private static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+
     public static void main(String[] args) {
-        Scanner sca = new Scanner(System.in);
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-        ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-        ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
-
-        Cliente cliente = null;
-        Empleado empleado = null;
-        Habitacion habitación = null;
-        int idCliente;
-        int idEmpleado;
-        String nombre;
-        String apellidos;
-        String DNI;
-        int numeroTelefono;
-        int idHabitacion;
-        String tipo;
-        int numeroCamas;
-        double costePorDia;
-
         int opcion = 10;
 
         do {
-            System.out.println("1. Registrar cliente.");
-            System.out.println("2. Dar de baja a un cliente.");
-            System.out.println("3. Registrar empleado.");
-            System.out.println("4. Dar de baja a un empleado.");
-            System.out.println("5. Agregar nueva habitación.");
-            System.out.println("6. Eliminar una habitación.");
-            System.out.println("7. Mostrar todos los clientes.");
-            System.out.println("8. Mostrar todos los empleados.");
-            System.out.println("9. Mostrar todas las habitaciones.");
-            System.out.println("10. Salir del programa.");
-            System.out.println("Introduce el número de la opcion deseada: ");
-
+            mostrarMenu();
             opcion = sca.nextInt();
-
             switch (opcion) {
                 case 1:
-                    System.out.println("Introduzca el id del nuevo cliente: ");
-                    idCliente = sca.nextInt();
-                    cliente = new Cliente(idCliente);
-                    sca.nextLine();
-                    System.out.println("Introduzca el nombre del nuevo cliente: ");
-                    nombre = sca.nextLine();
-                    cliente.nombre = nombre;
-                    System.out.println("Introduzca los apellidos del nuevo cliente: ");
-                    apellidos = sca.nextLine();
-                    cliente.apellidos = apellidos;
-                    System.out.println("Introduzca el DNI del nuevo cliente: ");
-                    cliente.DNI = sca.nextLine();
-                    System.out.println("Introduzca el número de teléfono del nuevo cliente: ");
-                    numeroTelefono = sca.nextInt();
-                    cliente.numeroTelefono = numeroTelefono;
-                    clientes.add(cliente);
-
+                    registrarCliente();
                     break;
                 case 2:
-                    System.out.println("Introduzca el id del cliente a dar de baja: ");
-                    idCliente = sca.nextInt();
-
-                    if (clientes.isEmpty()) {
-                        System.out.println("No hay clientes para dar de baja...");
-                    } else {
-                        for (Cliente clienteABorrar : clientes) {
-                            if (clienteABorrar.idCliente == idCliente) {
-                                clientes.remove(clienteABorrar);
-                            }
-                        }
-                    }
-
+                    darDeBajaCliente();
                     break;
                 case 3:
-                    System.out.println("Introduzca el id del nuevo empleado: ");
-                    idEmpleado = sca.nextInt();
-                    empleado = new Empleado(idEmpleado);
-                    sca.nextLine();
-                    System.out.println("Introduzca el nombre del nuevo empleado: ");
-                    nombre = sca.nextLine();
-                    empleado.nombre = nombre;
-                    System.out.println("Introduzca los apellidos del nuevo empleado: ");
-                    apellidos = sca.nextLine();
-                    empleado.apellidos = apellidos;
-                    System.out.println("Introduzca el DNI del nuevo empleado: ");
-                    DNI = sca.nextLine();
-                    empleado.DNI = DNI;
-                    System.out.println("Introduzca el número de teléfono del nuevo empleado: ");
-                    numeroTelefono = sca.nextInt();
-                    empleado.numeroTelefono = numeroTelefono;
-                    empleados.add(empleado);
-
+                    registrarEmpleado();
                     break;
                 case 4:
-                    System.out.println("Introduzca el id del empleado a dar de baja: ");
-                    idCliente = sca.nextInt();
-                    if (empleados.isEmpty()) {
-                        System.out.println("No hay empleados para dar de baja...");
-                    } else {
-
-                        for (Empleado clienteABorrar : empleados) {
-                            if (clienteABorrar.idEmpleado == idCliente) {
-                                empleado = clienteABorrar;
-
-                            }
-                        }
-                        empleados.remove(empleado);
-                    }
-
+                    darDeBajaEmpleado();
                     break;
                 case 5:
-                    System.out.println("Introduzca el id de la nueva habitación: ");
-                    idHabitacion = sca.nextInt();
-                    habitación = new Habitacion(idHabitacion);
-                    sca.nextLine();
-                    System.out.println("Introduzca el tipo de la nueva habitación: ");
-                    tipo = sca.nextLine();
-                    habitación.tipo = tipo;
-                    System.out.println("Introduzca número de camas de la nueva habitación: ");
-                    numeroCamas = sca.nextInt();
-                    habitación.numeroCamas = numeroCamas;
-                    System.out.println("Introduzca el coste por día de la nueva habitación: ");
-                    costePorDia = sca.nextDouble();
-                    habitación.costePorDia = costePorDia;
-                    sca.nextLine();
-                    habitaciones.add(habitación);
-
+                    agregarHabitacion();
                     break;
                 case 6:
-                    System.out.println("Introduzca el id de la habitación a eliminar: ");
-                    idCliente = sca.nextInt();
-                    if (habitaciones.isEmpty()) {
-                        System.out.println("No hay habitaciones para borrar...");
-                    } else {
-
-                        for (Habitacion clienteABorrar : habitaciones) {
-                            if (clienteABorrar.idHabitacion == idCliente) {
-                                habitación = clienteABorrar;
-
-                            }
-                        }
-
-                        habitaciones.remove(habitación);
-                    }
-
+                    eliminarHabitacion();
                     break;
                 case 7:
-                    if (clientes.isEmpty()) {
-                        System.out.println("No hay clientes para mostrar...");
-                    } else {
-                        for (Cliente clienteAMostrar : clientes) {
-                            System.out.println("ID: " + clienteAMostrar.idCliente);
-                            System.out.println("Nombre: " + clienteAMostrar.nombre);
-                            System.out.println("Apellidos: " + clienteAMostrar.apellidos);
-                            System.out.println("DNI: " + clienteAMostrar.DNI);
-                            System.out.println("Número de teléfono: " + clienteAMostrar.numeroTelefono);
-                            System.out.println("");
-                        }
-                    }
-
+                    mostrarClientes();
                     break;
                 case 8:
-                    if (empleados.isEmpty()) {
-                        System.out.println("No hay profesores para mostrar...");
-                    } else {
-
-                        for (Empleado empleadoAMostrar : empleados) {
-                            System.out.println("ID: " + empleadoAMostrar.idEmpleado);
-                            System.out.println("Nombre: " + empleadoAMostrar.nombre);
-                            System.out.println("Apellidos: " + empleadoAMostrar.apellidos);
-                            System.out.println("DNI: " + empleadoAMostrar.DNI);
-                            System.out.println("Número de teléfono: " + empleadoAMostrar.numeroTelefono);
-                            System.out.println("");
-                        }
-                    }
-
+                    mostrarEmpleados();
                     break;
                 case 9:
-                    if (habitaciones.isEmpty()) {
-                        System.out.println("No hay habitaciones para mostrar...");
-                    } else {
-
-                        for (Habitacion claseAMostrar : habitaciones) {
-                            System.out.println("ID: " + claseAMostrar.idHabitacion);
-                            System.out.println("Tipo: " + claseAMostrar.tipo);
-                            System.out.println("Número de camas: " + claseAMostrar.numeroCamas);
-                            System.out.println("Coste por día: " + claseAMostrar.costePorDia);
-                            System.out.println("");
-                        }
-                    }
-
+                    mostrarHabitaciones();
                     break;
                 case 10:
                     System.out.println("Cerrando el programa...");
-
                     break;
                 default:
                     System.out.println("La opción seleccionada no existe...");
             }
         } while (opcion != 10);
     }
-}
 
-/*bucle for each  for(String nombre: nombres){
-            System.out.println(nombre);
+    private static void mostrarMenu() {
+        System.out.println("1. Registrar cliente.");
+        System.out.println("2. Dar de baja a un cliente.");
+        System.out.println("3. Registrar empleado.");
+        System.out.println("4. Dar de baja a un empleado.");
+        System.out.println("5. Agregar nueva habitación.");
+        System.out.println("6. Eliminar una habitación.");
+        System.out.println("7. Mostrar todos los clientes.");
+        System.out.println("8. Mostrar todos los empleados.");
+        System.out.println("9. Mostrar todas las habitaciones.");
+        System.out.println("10. Salir del programa.");
+        System.out.println("Introduce el número de la opcion deseada: ");
     }
 
-ArrayList
+    private static void registrarCliente() {
+        System.out.println("Introduzca el id del nuevo cliente: ");
+        int idCliente = sca.nextInt();
+        Cliente cliente = new Cliente(idCliente);
+        sca.nextLine();
+        System.out.println("Introduzca el nombre del nuevo cliente: ");
+        String nombre = sca.nextLine();
+        cliente.setNombre(nombre);
+        System.out.println("Introduzca los apellidos del nuevo cliente: ");
+        String apellidos = sca.nextLine();
+        cliente.setApellidos(apellidos);
+        System.out.println("Introduzca el DNI del nuevo cliente: ");
+        cliente.setDNI(sca.nextLine());
+        System.out.println("Introduzca el número de teléfono del nuevo cliente: ");
+        int numeroTelefono = sca.nextInt();
+        cliente.setNumeroTelefono(numeroTelefono);
+        clientes.add(cliente);
+    }
 
-Clase static
+    private static void darDeBajaCliente() {
+        System.out.println("Introduzca el id del cliente a dar de baja: ");
+        int idCliente = sca.nextInt();
+        if (clientes.isEmpty()) {
+            System.out.println("No hay clientes para dar de baja...");
+        } else {
+            clientes.removeIf(cliente -> cliente.getIdCliente() == idCliente);
+        }
+    }
 
-documentacion de java = @see,@param,@return
+    private static void registrarEmpleado() {
+        System.out.println("Introduzca el id del nuevo empleado: ");
+        int idEmpleado = sca.nextInt();
+        Empleado empleado = new Empleado(idEmpleado);
+        sca.nextLine();
+        System.out.println("Introduzca el nombre del nuevo empleado: ");
+        String nombre = sca.nextLine();
+        empleado.setNombre(nombre);
+        System.out.println("Introduzca los apellidos del nuevo empleado: ");
+        String apellidos = sca.nextLine();
+        empleado.setApellidos(apellidos);
+        System.out.println("Introduzca el DNI del nuevo empleado: ");
+        String DNI = sca.nextLine();
+        empleado.setDNI(DNI);
+        System.out.println("Introduzca el número de teléfono del nuevo empleado: ");
+        int numeroTelefono = sca.nextInt();
+        empleado.setNumeroTelefono(numeroTelefono);
+        empleados.add(empleado);
+    }
 
-for(int i =0;i<array.length;i++){
-for(int e =0;i<array.length;i++){
-array[i] = ramdom.nextint(10,-10);
+    private static void darDeBajaEmpleado() {
+        System.out.println("Introduzca el id del empleado a dar de baja: ");
+        int idEmpleado = sca.nextInt();
+        if (empleados.isEmpty()) {
+            System.out.println("No hay empleados para dar de baja...");
+        } else {
+            empleados.removeIf(empleado -> empleado.getIdEmpleado() == idEmpleado);
+        }
+    }
 
-assertequals --> para comprobar los valores del metodo dandoles los valores que queremos que salgan
+    private static void agregarHabitacion() {
+        System.out.println("Introduzca el id de la nueva habitación: ");
+        int idHabitacion = sca.nextInt();
+        Habitacion habitacion = new Habitacion(idHabitacion);
+        sca.nextLine();
+        System.out.println("Introduzca el tipo de la nueva habitación: ");
+        String tipo = sca.nextLine();
+        habitacion.setTipo(tipo);
+        System.out.println("Introduzca número de camas de la nueva habitación: ");
+        int numeroCamas = sca.nextInt();
+        habitacion.setNumeroCamas(numeroCamas);
+        System.out.println("Introduzca el coste por día de la nueva habitación: ");
+        double costePorDia = sca.nextDouble();
+        habitacion.setCostePorDia(costePorDia);
+        sca.nextLine();
+        habitaciones.add(habitacion);
+    }
 
-Para crear los testJunit --> tools/create/update test;
+    private static void eliminarHabitacion() {
+        System.out.println("Introduzca el id de la habitación a eliminar: ");
+        int idHabitacion = sca.nextInt();
+        if (habitaciones.isEmpty()) {
+            System.out.println("No hay habitaciones para borrar...");
+        } else {
+            habitaciones.removeIf(habitacion -> habitacion.getIdHabitacion() == idHabitacion);
+        }
+    }
 
+    private static void mostrarClientes() {
+        if (clientes.isEmpty()) {
+            System.out.println("No hay clientes para mostrar...");
+        } else {
+            clientes.forEach(cliente -> {
+                System.out.println("ID: " + cliente.getIdCliente());
+                System.out.println("Nombre: " + cliente.getNombre());
+                System.out.println("Apellidos: " + cliente.getApellidos());
+                System.out.println("DNI: " + cliente.getDNI());
+                System.out.println("Número de teléfono: " + cliente.getNumeroTelefono());
+                System.out.println("");
+            });
+        }
+    }
 
+    private static void mostrarEmpleados() {
+        if (empleados.isEmpty()) {
+            System.out.println("No hay empleados para mostrar...");
+        } else {
+            empleados.forEach(empleado -> {
+                System.out.println("ID: " + empleado.getIdEmpleado());
+                System.out.println("Nombre: " + empleado.getNombre());
+                System.out.println("Apellidos: " + empleado.getApellidos());
+                System.out.println("DNI: " + empleado.getDNI());
+                System.out.println("Número de teléfono: " + empleado.getNumeroTelefono());
+                System.out.println("");
+            });
+        }
+    }
 
+    private static void mostrarHabitaciones() {
+        if (habitaciones.isEmpty()) {
+            System.out.println("No hay habitaciones para mostrar...");
+        } else {
+            habitaciones.forEach(habitacion -> {
+                System.out.println("ID: " + habitacion.getIdHabitacion());
+                System.out.println("Tipo: " + habitacion.getTipo());
+                System.out.println("Número de camas: " + habitacion.getNumeroCamas());
+                System.out.println("Coste por día: " + habitacion.getCostePorDia());
+                System.out.println("");
+            });
+        }
+    }
 }
-}
-
-switch(scanner)
-
-break;
-continue;
-
-pruebas caja negra/blanca
-
-
-
-
-
-
-*/
