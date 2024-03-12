@@ -67,7 +67,7 @@ public class Hotel {
         System.out.println("8. Mostrar todos los empleados.");
         System.out.println("9. Mostrar todas las habitaciones.");
         System.out.println("10. Salir del programa.");
-        System.out.println("Introduce el número de la opcion deseada: ");
+        System.out.println("Introduce el número de la opcion deseadas: ");
     }
 
     private static void registrarCliente() {
