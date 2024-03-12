@@ -6,13 +6,24 @@ import com.mycompany.hotel.objetos.Habitacion;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Clase principal que representa un sistema de gestión de hotel. 
+ * 
+ *
+ * @author Diego Pinchao
+ * @version 1.0
+ */
 public class Hotel {
 
-    private static Scanner sca = new Scanner(System.in);
-    private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-    private static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-    private static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+    public static Scanner sca = new Scanner(System.in);
+    public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+    public static ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+    public static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
 
+    /**
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         int opcion = 10;
 
@@ -56,7 +67,12 @@ public class Hotel {
         } while (opcion != 10);
     }
 
-    private static void mostrarMenu() {
+    /**
+     * @since Funcion que nos permite mostrar el menu.
+     * 
+     * 
+     */
+    public static void mostrarMenu() {
         System.out.println("1. Registrar cliente.");
         System.out.println("2. Dar de baja a un cliente.");
         System.out.println("3. Registrar empleado.");
@@ -70,7 +86,18 @@ public class Hotel {
         System.out.println("Introduce el número de la opcion deseadas: ");
     }
 
-    private static void registrarCliente() {
+    
+    
+    public static void registrarCliente() {
+    
+     /**
+     * Funcion para registrar un cliente.
+     * @param idCliente sirve para poder guardar los id de los Clientes
+     * 
+     * 
+     * 
+     * 
+     */
         System.out.println("Introduzca el id del nuevo cliente: ");
         int idCliente = sca.nextInt();
         Cliente cliente = new Cliente(idCliente);
@@ -89,7 +116,15 @@ public class Hotel {
         clientes.add(cliente);
     }
 
-    private static void darDeBajaCliente() {
+    public static void darDeBajaCliente() {
+        /**
+     * Funcion para registrar un cliente.
+     * @param idCliente sirve para poder borrar clientes
+     * 
+     * 
+     * 
+     * 
+     */
         System.out.println("Introduzca el id del cliente a dar de baja: ");
         int idCliente = sca.nextInt();
         if (clientes.isEmpty()) {
@@ -99,7 +134,16 @@ public class Hotel {
         }
     }
 
-    private static void registrarEmpleado() {
+    public static void registrarEmpleado() {
+        
+     /**
+     * Funcion para registrar un cliente.
+     * @param idEmpleado sirve para poder guardar los id de los Empleados
+     * 
+     * 
+     * 
+     * 
+     */
         System.out.println("Introduzca el id del nuevo empleado: ");
         int idEmpleado = sca.nextInt();
         Empleado empleado = new Empleado(idEmpleado);
@@ -119,7 +163,7 @@ public class Hotel {
         empleados.add(empleado);
     }
 
-    private static void darDeBajaEmpleado() {
+    public static void darDeBajaEmpleado() {
         System.out.println("Introduzca el id del empleado a dar de baja: ");
         int idEmpleado = sca.nextInt();
         if (empleados.isEmpty()) {
@@ -129,9 +173,22 @@ public class Hotel {
         }
     }
 
-    private static void agregarHabitacion() {
+    /**
+     * 
+     * @return idHabitacionGuardo  
+     */
+    public static int agregarHabitacion() {
+     /**
+     * Funcion para registrar un cliente.
+     * @param idHabitacion sirve para poder guardar los id de los Empleados
+     * 
+     * 
+     * 
+     * 
+     */
         System.out.println("Introduzca el id de la nueva habitación: ");
         int idHabitacion = sca.nextInt();
+        int idHabitacionGuardo = idHabitacion;
         Habitacion habitacion = new Habitacion(idHabitacion);
         sca.nextLine();
         System.out.println("Introduzca el tipo de la nueva habitación: ");
@@ -145,9 +202,11 @@ public class Hotel {
         habitacion.setCostePorDia(costePorDia);
         sca.nextLine();
         habitaciones.add(habitacion);
+        
+        return idHabitacionGuardo;
     }
 
-    private static void eliminarHabitacion() {
+    public static void eliminarHabitacion() {
         System.out.println("Introduzca el id de la habitación a eliminar: ");
         int idHabitacion = sca.nextInt();
         if (habitaciones.isEmpty()) {
@@ -157,7 +216,7 @@ public class Hotel {
         }
     }
 
-    private static void mostrarClientes() {
+    public static void mostrarClientes() {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes para mostrar...");
         } else {
@@ -172,7 +231,7 @@ public class Hotel {
         }
     }
 
-    private static void mostrarEmpleados() {
+    public static void mostrarEmpleados() {
         if (empleados.isEmpty()) {
             System.out.println("No hay empleados para mostrar...");
         } else {
@@ -187,7 +246,7 @@ public class Hotel {
         }
     }
 
-    private static void mostrarHabitaciones() {
+    public static void mostrarHabitaciones() {
         if (habitaciones.isEmpty()) {
             System.out.println("No hay habitaciones para mostrar...");
         } else {

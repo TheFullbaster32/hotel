@@ -3,70 +3,70 @@ package com.mycompany.hotel.objetos;
 public class Empleado {
 
     /**
-     * @return the idEmpleado
+     * @return Devuelve el id del empleado
      */
     public int getIdEmpleado() {
         return idEmpleado;
     }
 
     /**
-     * @param idEmpleado the idEmpleado to set
+     * @param idEmpleado le damos el valor de idEmpleado al setter
      */
     public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
     /**
-     * @return the nombre
+     * @return Devuelve el nombre del empleado
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param nombre  le damos el valor de nombre al setter
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the apellidos
+     * @return Devuelve el apellido del empleado
      */
     public String getApellidos() {
         return apellidos;
     }
 
     /**
-     * @param apellidos the apellidos to set
+     * @param apellidos  le damos el valor de apellidos al setter
      */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
     /**
-     * @return the DNI
+     * @return Devuelve el DNI del empleado
      */
     public String getDNI() {
         return DNI;
     }
 
     /**
-     * @param DNI the DNI to set
+     * @param DNI  le damos el valor de DNI al setter
      */
     public void setDNI(String DNI) {
         this.DNI = DNI;
     }
 
     /**
-     * @return the numeroTelefono
+     * @return Devuelve el numero de telefono del empleado
      */
     public int getNumeroTelefono() {
         return numeroTelefono;
     }
 
     /**
-     * @param numeroTelefono the numeroTelefono to set
+     * @param numeroTelefono  le damos el valor de numeroTelefono al setter
      */
     public void setNumeroTelefono(int numeroTelefono) {
         this.numeroTelefono = numeroTelefono;

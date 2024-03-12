@@ -3,56 +3,56 @@ package com.mycompany.hotel.objetos;
 public class Habitacion {
 
     /**
-     * @return the idHabitacion
+     * @return Devuelve el id de la habitacion
      */
     public int getIdHabitacion() {
         return idHabitacion;
     }
 
     /**
-     * @param idHabitacion the idHabitacion to set
+     * @param idHabitacion le damos el valor de idHabitacion al setter
      */
     public void setIdHabitacion(int idHabitacion) {
         this.idHabitacion = idHabitacion;
     }
 
     /**
-     * @return the tipo
+     * @return Devuelve el tipo de habitacion
      */
     public String getTipo() {
         return tipo;
     }
 
     /**
-     * @param tipo the tipo to set
+     * @param tipo le damos el valor de tipo al setter
      */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
     /**
-     * @return the numeroCamas
+     * @return Devuelve el numeroDeCamas de la habitacion
      */
     public int getNumeroCamas() {
         return numeroCamas;
     }
 
     /**
-     * @param numeroCamas the numeroCamas to set
+     * @param numeroCamas le damos el valor de tipo al setter
      */
     public void setNumeroCamas(int numeroCamas) {
         this.numeroCamas = numeroCamas;
     }
 
     /**
-     * @return the costePorDia
+     * @return Devuelve el coste/dia de la habitacion
      */
     public double getCostePorDia() {
         return costePorDia;
     }
 
     /**
-     * @param costePorDia the costePorDia to set
+     * @param costePorDia le damos el valor de tipo al setter
      */
     public void setCostePorDia(double costePorDia) {
         this.costePorDia = costePorDia;
